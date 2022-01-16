@@ -113,7 +113,7 @@ the browser. These are:
 | LibROSprite    | RISC OS Sprite format image decoder                      |
 
 To fetch each of these libraries, run the appropriate commands from the
-Docs/LIBRARIES file, from within your workspace directory.
+docs/netsurf-libraries.md file, from within your workspace directory.
 
 To build and install these libraries, simply enter each of their directories
 and run:

@@ -61,7 +61,7 @@ functionality thelselves in a manner more integrated into a toolkit.
 A frontend is generally named for the toolkit it is implementing (i.e
 gtk for the GTK+ toolkit). It is advisable to be as specific as
 possible e.g. the frontend for the windows operating system should
-have been named win32 allowing for an impementation using a differnt
+have been named win32 allowing for an implementation using a differnt
 toolkit (e.g mfc)
 
 All the files needed for the frontend are contained in a single
@@ -93,8 +93,8 @@ The usual shape for the `main()` function is a six step process:
  1. The frontends operation tables are registered with NetSurf
  2. The toolkit specific initialisation is performed (which may involve calling NetSurf provided utility functions for support operations like logging, message translations etc.)
  3. Initialise the NetSurf core. After this point all browser functionality is available and registered operations can be called.
- 4. Perform toolkiit setup, usually opening the initial browsing window (perhaps according to user preferences)
- 5. Run the toolkits main loop while ensuring the Netsurf scheduled operations are also run at teh apropriate time.
+ 4. Perform toolkit setup, usually opening the initial browsing window (perhaps according to user preferences)
+ 5. Run the toolkits main loop while ensuring the Netsurf scheduled operations are also run at the apropriate time.
  6. Finalisation on completion.
 
 ## NetSurf operations tables
