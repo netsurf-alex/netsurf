@@ -93,8 +93,9 @@ static int open_windows = 0;
  */
 static void nsws_window_set_accels(struct gui_window *gw)
 {
-	int i, nitems = 13;
-	ACCEL accels[nitems];
+	ACCEL accels[13];
+	const int nitems = sizeof(accels) / sizeof(accels[0]);
+	int i;
 
 	for (i = 0; i < nitems; i++) {
 		accels[i].fVirt = FCONTROL | FVIRTKEY;
@@ -1276,12 +1277,14 @@ nsws_window_command(HWND hwnd,
 			break;
 
 		int len = SendMessage(gw->urlbar, WM_GETTEXTLENGTH, 0, 0);
-		char addr[len + 1];
+		char *addr = malloc(len + 1);
+		if (!addr)
+			break;
 		SendMessage(gw->urlbar, WM_GETTEXT, (WPARAM)(len + 1), (LPARAM)addr);
 		NSLOG(netsurf, INFO, "launching %s\n", addr);
 
 		err = nsurl_create(addr, &url);
-
+		free(addr);
 		if (err != NSERROR_OK) {
 			win32_report_nserror(err, 0);
 		} else {
