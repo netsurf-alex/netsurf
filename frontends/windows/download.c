@@ -100,10 +100,10 @@ static void nsws_download_update_label(void *p)
 					w->time_remaining);
 		}
 	}
-	char label[strlen(w->title) + strlen(size) + strlen(w->total_size) +
+	char *label = alloca(strlen(w->title) + strlen(size) + strlen(w->total_size) +
 		   + strlen(w->domain) + strlen(w->filename) +
 		   SLEN("download  from  to \n[\t/\t]\n estimate of time"
-			" remaining ") + i + 1];
+			" remaining ") + i + 1);
 	sprintf(label, "download %s  from %s to %s\n[%s\t/\t%s] [%d%%]\n"
 		"estimate of time remaining %s", w->title, w->domain,
 		w->filename, size, w->total_size, w->progress / 100,

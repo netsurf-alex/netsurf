@@ -1277,14 +1277,11 @@ nsws_window_command(HWND hwnd,
 			break;
 
 		int len = SendMessage(gw->urlbar, WM_GETTEXTLENGTH, 0, 0);
-		char *addr = malloc(len + 1);
-		if (!addr)
-			break;
+		char *addr = alloca(len + 1);
 		SendMessage(gw->urlbar, WM_GETTEXT, (WPARAM)(len + 1), (LPARAM)addr);
 		NSLOG(netsurf, INFO, "launching %s\n", addr);
 
 		err = nsurl_create(addr, &url);
-		free(addr);
 		if (err != NSERROR_OK) {
 			win32_report_nserror(err, 0);
 		} else {
