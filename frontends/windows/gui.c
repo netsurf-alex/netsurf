@@ -27,6 +27,8 @@
 #include <sys/stat.h>
 #ifndef _MSC_VER
 #include <unistd.h>
+#else
+#include <unistd_msvc.h>
 #endif
 #include <windows.h>
 

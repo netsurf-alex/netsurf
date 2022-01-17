@@ -105,7 +105,7 @@ char *strchrnul(const char *s, int c);
 #endif
 
 #define HAVE_INETPTON
-#if (defined(_WIN32))
+#if (defined(_WIN32) && !defined(_MSC_VER))
 #undef HAVE_INETPTON
 #endif
 
