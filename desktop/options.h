@@ -28,16 +28,11 @@
  *   with different macro definitions so there is no guard
  */
 
-#ifndef NETSURF_DESKTOP_OPTIONS_H_
-#define NETSURF_DESKTOP_OPTIONS_H_
-
 #include "netsurf/types.h"
 
 /* defines for system colour table */
 #define NSOPTION_SYS_COLOUR_START NSOPTION_sys_colour_ActiveBorder
 #define NSOPTION_SYS_COLOUR_END NSOPTION_sys_colour_WindowText
-
-#endif
 
 /** An HTTP proxy should be used. */
 NSOPTION_BOOL(http_proxy, false) 

@@ -16,13 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _NETSURF_WIN32_OPTIONS_H_
-#define _NETSURF_WIN32_OPTIONS_H_
-
-/* currently nothing here */
-
-#endif
-
 /* location to download files to */
 NSOPTION_STRING(downloads_directory, NULL)
 
