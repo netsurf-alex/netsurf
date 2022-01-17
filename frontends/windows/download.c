@@ -100,7 +100,7 @@ static void nsws_download_update_label(void *p)
 					w->time_remaining);
 		}
 	}
-	char *label = alloca(strlen(w->title) + strlen(size) + strlen(w->total_size) +
+	char *label = _alloca(strlen(w->title) + strlen(size) + strlen(w->total_size) +
 		   + strlen(w->domain) + strlen(w->filename) +
 		   SLEN("download  from  to \n[\t/\t]\n estimate of time"
 			" remaining ") + i + 1);

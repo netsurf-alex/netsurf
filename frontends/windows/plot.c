@@ -743,7 +743,7 @@ polygon(const struct redraw_context *ctx,
 		return NSERROR_INVALID;
 	}
 
-	POINT *points = alloca(n * sizeof(POINT));
+	POINT *points = _alloca(n * sizeof(POINT));
 	unsigned int i;
 	HRGN clipregion = CreateRectRgnIndirect(&plot_clip);
 	if (clipregion == NULL) {

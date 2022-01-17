@@ -25,7 +25,9 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#ifndef _MSC_VER
 #include <unistd.h>
+#endif
 #include <windows.h>
 
 #include "utils/errors.h"
@@ -174,9 +176,9 @@ nserror win32_warning(const char *warning, const char *detail)
 {
 	size_t len = 1 + ((warning != NULL) ? strlen(messages_get(warning)) :
 			  0) + ((detail != 0) ? strlen(detail) : 0);
-	char message[len];
+	char *message = _alloca(len);
 	snprintf(message, len, messages_get(warning), detail);
-	MessageBox(NULL, message, "Warning", MB_ICONWARNING);
+	MessageBoxA(NULL, message, "Warning", MB_ICONWARNING);
 
 	return NSERROR_OK;
 }
@@ -189,9 +191,9 @@ win32_report_nserror(nserror error, const char *detail)
 	size_t len = 1 +
 		strlen(messages_get_errorcode(error)) +
 		((detail != 0) ? strlen(detail) : 0);
-	char message[len];
+	char *message = _alloca(len);
 	snprintf(message, len, messages_get_errorcode(error), detail);
-	MessageBox(NULL, message, "Warning", MB_ICONWARNING);
+	MessageBoxA(NULL, message, "Warning", MB_ICONWARNING);
 
 	return NSERROR_OK;
 }

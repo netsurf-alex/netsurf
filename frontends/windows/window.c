@@ -1277,7 +1277,7 @@ nsws_window_command(HWND hwnd,
 			break;
 
 		int len = SendMessage(gw->urlbar, WM_GETTEXTLENGTH, 0, 0);
-		char *addr = alloca(len + 1);
+		char *addr = _alloca(len + 1);
 		SendMessage(gw->urlbar, WM_GETTEXT, (WPARAM)(len + 1), (LPARAM)addr);
 		NSLOG(netsurf, INFO, "launching %s\n", addr);
 
