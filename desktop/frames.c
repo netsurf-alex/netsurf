@@ -331,8 +331,8 @@ nserror browser_window_destroy_iframes(struct browser_window *bw)
  */
 static void browser_window_recalculate_frameset_internal(struct browser_window *bw)
 {
-	int widths[bw->cols][bw->rows];
-	int heights[bw->cols][bw->rows];
+	int *widths; //[bw->cols][bw->rows];
+	int *heights; //[bw->cols][bw->rows];
 	int bw_width, bw_height;
 	int avail_width, avail_height;
 	int row, row2, col, index;
@@ -343,6 +343,9 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 	int new_width, new_height;
 
 	assert(bw);
+
+	widths = _alloca(bw->cols * bw->rows * sizeof(int));
+	heights = _alloca(bw->cols * bw->rows * sizeof(int));
 
 	/* window dimensions */
 	if (!bw->parent) {
@@ -370,21 +373,21 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 
 			switch (window->frame_width.unit) {
 			case FRAME_DIMENSION_PIXELS:
-				widths[col][row] = window->frame_width.value *
+				widths[col * bw->rows + row] = window->frame_width.value *
 						window->scale;
 				if (window->border) {
 					if (col != 0)
-						widths[col][row] += 1;
+						widths[col * bw->rows + row] += 1;
 					if (col != bw->cols - 1)
-						widths[col][row] += 1;
+						widths[col * bw->rows + row] += 1;
 				}
 				break;
 			case FRAME_DIMENSION_PERCENT:
-				widths[col][row] = bw_width *
+				widths[col* bw->rows + row] = bw_width *
 						window->frame_width.value / 100;
 				break;
 			case FRAME_DIMENSION_RELATIVE:
-				widths[col][row] = 0;
+				widths[col * bw->rows + row] = 0;
 				relative += window->frame_width.value;
 				break;
 			default:
@@ -397,7 +400,7 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 						FRAME_DIMENSION_RELATIVE);
 				break;
 			}
-			avail_width -= widths[col][row];
+			avail_width -= widths[col * bw->rows + row];
 		}
 
 		/* Redistribute to fit window */
@@ -414,7 +417,7 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 							relative;
 					avail_width -= size;
 					relative -= window->frame_width.value;
-					widths[col][row] += size;
+					widths[col * bw->rows + row] += size;
 				}
 			}
 		} else if (bw_width != avail_width) {
@@ -424,16 +427,16 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 			for (col = 0; col < bw->cols; col++) {
 				if (col == bw->cols - 1) {
 					/* Last cell, use up remainder */
-					widths[col][row] += extent - applied;
-					widths[col][row] =
-							widths[col][row] < 0 ?
-							0 : widths[col][row];
+					widths[col* bw->rows + row] += extent - applied;
+					widths[col * bw->rows + row] =
+							widths[col* bw->rows + row] < 0 ?
+							0 : widths[col * bw->rows + row];
 				} else {
 					/* Find size of cell adjustment */
-					size = (widths[col][row] * extent) /
+					size = (widths[col * bw->rows + row] * extent) /
 							(bw_width - extent);
 					/* Modify cell */
-					widths[col][row] += size;
+					widths[col * bw->rows + row] += size;
 					applied += size;
 				}
 			}
@@ -450,21 +453,21 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 
 			switch (window->frame_height.unit) {
 			case FRAME_DIMENSION_PIXELS:
-				heights[col][row] = window->frame_height.value *
+				heights[col * bw->rows + row] = window->frame_height.value *
 						window->scale;
 				if (window->border) {
 					if (row != 0)
-						heights[col][row] += 1;
+						heights[col * bw->rows + row] += 1;
 					if (row != bw->rows - 1)
-						heights[col][row] += 1;
+						heights[col * bw->rows + row] += 1;
 				}
 				break;
 			case FRAME_DIMENSION_PERCENT:
-				heights[col][row] = bw_height *
+				heights[col * bw->rows + row] = bw_height *
 						window->frame_height.value / 100;
 				break;
 			case FRAME_DIMENSION_RELATIVE:
-				heights[col][row] = 0;
+				heights[col * bw->rows + row] = 0;
 				relative += window->frame_height.value;
 				break;
 			default:
@@ -477,7 +480,7 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 						FRAME_DIMENSION_RELATIVE);
 				break;
 			}
-			avail_height -= heights[col][row];
+			avail_height -= heights[col * bw->rows + row];
 		}
 
 		if (avail_height == 0)
@@ -497,7 +500,7 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 							relative;
 					avail_height -= size;
 					relative -= window->frame_height.value;
-					heights[col][row] += size;
+					heights[col * bw->rows + row] += size;
 				}
 			}
 		} else if (bw_height != avail_height) {
@@ -507,16 +510,16 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 			for (row = 0; row < bw->rows; row++) {
 				if (row == bw->rows - 1) {
 					/* Last cell, use up remainder */
-					heights[col][row] += extent - applied;
-					heights[col][row] =
-							heights[col][row] < 0 ?
-							0 : heights[col][row];
+					heights[col * bw->rows + row] += extent - applied;
+					heights[col * bw->rows + row] =
+							heights[col * bw->rows + row] < 0 ?
+							0 : heights[col * bw->rows + row];
 				} else {
 					/* Find size of cell adjustment */
-					size = (heights[col][row] * extent) /
+					size = (heights[col * bw->rows + row] * extent) /
 							(bw_height - extent);
 					/* Modify cell */
-					heights[col][row] += size;
+					heights[col * bw->rows + row] += size;
 					applied += size;
 				}
 			}
@@ -532,13 +535,13 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 
 			y = 0;
 			for (row2 = 0; row2 < row; row2++)
-				y+= heights[col][row2];
+				y += heights[col * bw->rows + row2];
 
 			window->x = x;
 			window->y = y;
 
-			new_width = widths[col][row] - 1;
-			new_height = heights[col][row] - 1;
+			new_width = widths[col * bw->rows + row] - 1;
+			new_height = heights[col * bw->rows + row] - 1;
 
 			if (window->width != new_width ||
 					window->height != new_height) {
@@ -552,7 +555,7 @@ static void browser_window_recalculate_frameset_internal(struct browser_window *
 				browser_window_handle_scrollbars(window);
 			}
 
-			x += widths[col][row];
+			x += widths[col * bw->rows + row];
 
 			if (window->children)
 				browser_window_recalculate_frameset_internal(window);
