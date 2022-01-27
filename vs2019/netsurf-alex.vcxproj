@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8c881791-a198-48e2-b83d-d09b05bac77c}</ProjectGuid>
+    <RootNamespace>netsurfalex</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;nswin32;CURL_STATICLIB;CARES_STATICLIB;__STRICT_ANSI__;NETSURF_LOG_LEVEL=VERBOSE;NETSURF_BUILTIN_LOG_FILTER="";NETSURF_BUILTIN_VERBOSE_FILTER="";NETSURF_HOMEPAGE="about:welcome";NETSURF_WINDOWS_RESPATH="";PATH_MAX=256;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_INETPTON;HAVE_VA_COPY;_USE_MATH_DEFINES;ssize_t=size_t;restrict=;strncasecmp=_strnicmp;strcasecmp=_stricmp;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../;../include;../content/handlers;../frontends;../frontends/windows;../../libwapcaplet/include;../../libdom/include;../../libcss/include;../../libnsutils/include;../../curl/builds/libcurl-vc-x86-release-static-ipv6-sspi-schannel/include;../../inst/include;../../libiconv-for-Windows/include;../../zlib;../vs2019;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comctl32.lib;comdlg32.lib;advapi32.lib;shell32.lib;shlwapi.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;ws2_32.lib;crypt32.lib;normaliz.lib;wldap32.lib;libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../;../include;../frontends;../../libwapcaplet/include;../frontends/windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Image Include="netsurf-alex.ico" />
+    <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\content\content.c" />
+    <ClCompile Include="..\content\content_factory.c" />
+    <ClCompile Include="..\content\fetch.c" />
+    <ClCompile Include="..\content\fetchers\about\about.c" />
+    <ClCompile Include="..\content\fetchers\about\blank.c" />
+    <ClCompile Include="..\content\fetchers\about\certificate.c" />
+    <ClCompile Include="..\content\fetchers\about\chart.c" />
+    <ClCompile Include="..\content\fetchers\about\choices.c" />
+    <ClCompile Include="..\content\fetchers\about\config.c" />
+    <ClCompile Include="..\content\fetchers\about\imagecache.c" />
+    <ClCompile Include="..\content\fetchers\about\nscolours.c" />
+    <ClCompile Include="..\content\fetchers\about\query.c" />
+    <ClCompile Include="..\content\fetchers\about\query_auth.c" />
+    <ClCompile Include="..\content\fetchers\about\query_fetcherror.c" />
+    <ClCompile Include="..\content\fetchers\about\query_privacy.c" />
+    <ClCompile Include="..\content\fetchers\about\query_timeout.c" />
+    <ClCompile Include="..\content\fetchers\about\testament.c" />
+    <ClCompile Include="..\content\fetchers\curl.c" />
+    <ClCompile Include="..\content\fetchers\data.c" />
+    <ClCompile Include="..\content\fetchers\file\dirlist.c" />
+    <ClCompile Include="..\content\fetchers\file\file.c" />
+    <ClCompile Include="..\content\fetchers\resource.c" />
+    <ClCompile Include="..\content\fs_backing_store.c" />
+    <ClCompile Include="..\content\handlers\css\css.c" />
+    <ClCompile Include="..\content\handlers\css\dump.c" />
+    <ClCompile Include="..\content\handlers\css\hints.c" />
+    <ClCompile Include="..\content\handlers\css\internal.c" />
+    <ClCompile Include="..\content\handlers\css\select.c" />
+    <ClCompile Include="..\content\handlers\html\box_construct.c" />
+    <ClCompile Include="..\content\handlers\html\box_inspect.c" />
+    <ClCompile Include="..\content\handlers\html\box_manipulate.c" />
+    <ClCompile Include="..\content\handlers\html\box_normalise.c" />
+    <ClCompile Include="..\content\handlers\html\box_special.c" />
+    <ClCompile Include="..\content\handlers\html\box_textarea.c" />
+    <ClCompile Include="..\content\handlers\html\css.c" />
+    <ClCompile Include="..\content\handlers\html\css_fetcher.c" />
+    <ClCompile Include="..\content\handlers\html\dom_event.c" />
+    <ClCompile Include="..\content\handlers\html\font.c" />
+    <ClCompile Include="..\content\handlers\html\form.c" />
+    <ClCompile Include="..\content\handlers\html\forms.c" />
+    <ClCompile Include="..\content\handlers\html\html.c" />
+    <ClCompile Include="..\content\handlers\html\imagemap.c" />
+    <ClCompile Include="..\content\handlers\html\interaction.c" />
+    <ClCompile Include="..\content\handlers\html\layout.c" />
+    <ClCompile Include="..\content\handlers\html\object.c" />
+    <ClCompile Include="..\content\handlers\html\redraw.c" />
+    <ClCompile Include="..\content\handlers\html\redraw_border.c" />
+    <ClCompile Include="..\content\handlers\html\script.c" />
+    <ClCompile Include="..\content\handlers\html\table.c" />
+    <ClCompile Include="..\content\handlers\html\textselection.c" />
+    <ClCompile Include="..\content\handlers\image\bmp.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\content\handlers\image\gif.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\content\handlers\image\ico.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\content\handlers\image\image.c" />
+    <ClCompile Include="..\content\handlers\image\image_cache.c" />
+    <ClCompile Include="..\content\handlers\image\jpeg.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\content\handlers\image\rsvg.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\content\handlers\image\svg.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\content\handlers\image\video.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\content\handlers\image\webp.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\content\handlers\javascript\content.c" />
+    <ClCompile Include="..\content\handlers\javascript\fetcher.c" />
+    <ClCompile Include="..\content\handlers\javascript\none\none.c" />
+    <ClCompile Include="..\content\handlers\text\textplain.c" />
+    <ClCompile Include="..\content\hlcache.c" />
+    <ClCompile Include="..\content\llcache.c" />
+    <ClCompile Include="..\content\mimesniff.c" />
+    <ClCompile Include="..\content\no_backing_store.c" />
+    <ClCompile Include="..\content\textsearch.c" />
+    <ClCompile Include="..\content\urldb.c" />
+    <ClCompile Include="..\desktop\browser.c" />
+    <ClCompile Include="..\desktop\browser_history.c" />
+    <ClCompile Include="..\desktop\browser_window.c" />
+    <ClCompile Include="..\desktop\cookie_manager.c" />
+    <ClCompile Include="..\desktop\cw_helper.c" />
+    <ClCompile Include="..\desktop\download.c" />
+    <ClCompile Include="..\desktop\font_haru.c" />
+    <ClCompile Include="..\desktop\frames.c" />
+    <ClCompile Include="..\desktop\global_history.c" />
+    <ClCompile Include="..\desktop\gui_factory.c" />
+    <ClCompile Include="..\desktop\hotlist.c" />
+    <ClCompile Include="..\desktop\knockout.c" />
+    <ClCompile Include="..\desktop\local_history.c" />
+    <ClCompile Include="..\desktop\mouse.c" />
+    <ClCompile Include="..\desktop\netsurf.c" />
+    <ClCompile Include="..\desktop\page-info.c" />
+    <ClCompile Include="..\desktop\plot_style.c" />
+    <ClCompile Include="..\desktop\print.c" />
+    <ClCompile Include="..\desktop\save_complete.c" />
+    <ClCompile Include="..\desktop\save_pdf.c" />
+    <ClCompile Include="..\desktop\save_text.c" />
+    <ClCompile Include="..\desktop\scrollbar.c" />
+    <ClCompile Include="..\desktop\search.c" />
+    <ClCompile Include="..\desktop\searchweb.c" />
+    <ClCompile Include="..\desktop\selection.c" />
+    <ClCompile Include="..\desktop\system_colour.c" />
+    <ClCompile Include="..\desktop\textarea.c" />
+    <ClCompile Include="..\desktop\textinput.c" />
+    <ClCompile Include="..\desktop\treeview.c" />
+    <ClCompile Include="..\desktop\version.c" />
+    <ClCompile Include="..\frontends\windows\about.c" />
+    <ClCompile Include="..\frontends\windows\bitmap.c" />
+    <ClCompile Include="..\frontends\windows\clipboard.c" />
+    <ClCompile Include="..\frontends\windows\cookies.c" />
+    <ClCompile Include="..\frontends\windows\corewindow.c" />
+    <ClCompile Include="..\frontends\windows\download.c" />
+    <ClCompile Include="..\frontends\windows\drawable.c" />
+    <ClCompile Include="..\frontends\windows\fetch.c" />
+    <ClCompile Include="..\frontends\windows\file.c" />
+    <ClCompile Include="..\frontends\windows\findfile.c" />
+    <ClCompile Include="..\frontends\windows\font.c" />
+    <ClCompile Include="..\frontends\windows\global_history.c" />
+    <ClCompile Include="..\frontends\windows\gui.c" />
+    <ClCompile Include="..\frontends\windows\hotlist.c" />
+    <ClCompile Include="..\frontends\windows\local_history.c" />
+    <ClCompile Include="..\frontends\windows\main.c">
+      <PreprocessToFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</PreprocessToFile>
+    </ClCompile>
+    <ClCompile Include="..\frontends\windows\plot.c" />
+    <ClCompile Include="..\frontends\windows\pointers.c" />
+    <ClCompile Include="..\frontends\windows\prefs.c" />
+    <ClCompile Include="..\frontends\windows\schedule.c" />
+    <ClCompile Include="..\frontends\windows\windbg.c" />
+    <ClCompile Include="..\frontends\windows\window.c" />
+    <ClCompile Include="..\utils\bloom.c" />
+    <ClCompile Include="..\utils\corestrings.c" />
+    <ClCompile Include="..\utils\file.c" />
+    <ClCompile Include="..\utils\filename.c" />
+    <ClCompile Include="..\utils\filepath.c" />
+    <ClCompile Include="..\utils\hashmap.c" />
+    <ClCompile Include="..\utils\hashtable.c" />
+    <ClCompile Include="..\utils\http\cache-control.c" />
+    <ClCompile Include="..\utils\http\challenge.c" />
+    <ClCompile Include="..\utils\http\content-disposition.c" />
+    <ClCompile Include="..\utils\http\content-type.c" />
+    <ClCompile Include="..\utils\http\generics.c" />
+    <ClCompile Include="..\utils\http\parameter.c" />
+    <ClCompile Include="..\utils\http\primitives.c" />
+    <ClCompile Include="..\utils\http\strict-transport-security.c" />
+    <ClCompile Include="..\utils\http\www-authenticate.c" />
+    <ClCompile Include="..\utils\idna.c" />
+    <ClCompile Include="..\utils\libdom.c" />
+    <ClCompile Include="..\utils\log.c" />
+    <ClCompile Include="..\utils\messages.c" />
+    <ClCompile Include="..\utils\nscolour.c" />
+    <ClCompile Include="..\utils\nsoption.c" />
+    <ClCompile Include="..\utils\nsurl\nsurl.c" />
+    <ClCompile Include="..\utils\nsurl\parse.c" />
+    <ClCompile Include="..\utils\punycode.c" />
+    <ClCompile Include="..\utils\ssl_certs.c" />
+    <ClCompile Include="..\utils\talloc.c" />
+    <ClCompile Include="..\utils\time.c" />
+    <ClCompile Include="..\utils\url.c" />
+    <ClCompile Include="..\utils\useragent.c" />
+    <ClCompile Include="..\utils\utf8.c" />
+    <ClCompile Include="..\utils\utils.c" />
+    <ClCompile Include="dirent.c" />
+    <ClCompile Include="gettimeofday.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\desktop\browser_history.h" />
+    <ClInclude Include="..\desktop\browser_private.h" />
+    <ClInclude Include="..\desktop\cookie_manager.h" />
+    <ClInclude Include="..\desktop\cw_helper.h" />
+    <ClInclude Include="..\desktop\font_haru.h" />
+    <ClInclude Include="..\desktop\frames.h" />
+    <ClInclude Include="..\desktop\frame_types.h" />
+    <ClInclude Include="..\desktop\global_history.h" />
+    <ClInclude Include="..\desktop\gui_internal.h" />
+    <ClInclude Include="..\desktop\gui_table.h" />
+    <ClInclude Include="..\desktop\hotlist.h" />
+    <ClInclude Include="..\desktop\knockout.h" />
+    <ClInclude Include="..\desktop\local_history.h" />
+    <ClInclude Include="..\desktop\local_history_private.h" />
+    <ClInclude Include="..\desktop\options.h" />
+    <ClInclude Include="..\desktop\page-info.h" />
+    <ClInclude Include="..\desktop\print.h" />
+    <ClInclude Include="..\desktop\printer.h" />
+    <ClInclude Include="..\desktop\save_complete.h" />
+    <ClInclude Include="..\desktop\save_pdf.h" />
+    <ClInclude Include="..\desktop\save_text.h" />
+    <ClInclude Include="..\desktop\scrollbar.h" />
+    <ClInclude Include="..\desktop\search.h" />
+    <ClInclude Include="..\desktop\searchweb.h" />
+    <ClInclude Include="..\desktop\selection.h" />
+    <ClInclude Include="..\desktop\system_colour.h" />
+    <ClInclude Include="..\desktop\textarea.h" />
+    <ClInclude Include="..\desktop\textinput.h" />
+    <ClInclude Include="..\desktop\theme.h" />
+    <ClInclude Include="..\desktop\treeview.h" />
+    <ClInclude Include="..\desktop\version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\frontends\windows\res\resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\libiconv-for-Windows\libiconv.vcxproj">
+      <Project>{1704ea01-6b21-4362-9f1f-44d25cf2e0d7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\zlib\contrib\vstudio\vc14\zlibstat.vcxproj">
+      <Project>{745dec58-ebb3-47a9-a9b8-4c6627c01bf8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="css\css.vcxproj">
+      <Project>{2c9e481a-f27e-4353-a643-fda5a0e29933}</Project>
+    </ProjectReference>
+    <ProjectReference Include="dom\dom.vcxproj">
+      <Project>{124cde21-9772-4ef9-a061-0019e344c912}</Project>
+    </ProjectReference>
+    <ProjectReference Include="hubbub\hubbub.vcxproj">
+      <Project>{5d875ca3-56fc-4c1a-a9d3-24314a3ad7f5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="nsutils\nsutils.vcxproj">
+      <Project>{4f9b5518-24d8-471a-aff8-bfb130c8025b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="parserutils\parserutils.vcxproj">
+      <Project>{de58cbb9-2af3-4446-b66c-1821696d0838}</Project>
+    </ProjectReference>
+    <ProjectReference Include="wapcaplet\wapcaplet.vcxproj">
+      <Project>{2195a73d-5173-42b4-b953-7aff7e55d6e1}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

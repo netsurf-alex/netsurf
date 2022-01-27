@@ -1,0 +1,1 @@
+#define SOMETHING_STRINGS__ // Just a placeholder

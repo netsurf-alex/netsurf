@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\libdom\bindings\hubbub\parser.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\attr.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\cdatasection.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\characterdata.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\comment.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\document.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\document_type.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\doc_fragment.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\element.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\entity_ref.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\implementation.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\namednodemap.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\node.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\nodelist.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\pi.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\string.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\text.c" />
+    <ClCompile Include="..\..\..\libdom\src\core\typeinfo.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\custom_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\dispatch.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\document_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\event_listener.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\event_target.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\keyboard_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\mouse_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\mouse_multi_wheel_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\mouse_wheel_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\mutation_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\mutation_name_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\text_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\events\ui_event.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_anchor_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_applet_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_area_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_basefont_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_base_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_body_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_br_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_button_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_canvas_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_collection.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_directory_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_div_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_dlist_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_document.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_fieldset_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_font_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_form_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_frameset_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_frame_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_heading_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_head_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_hr_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_html_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_iframe_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_image_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_input_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_isindex_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_label_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_legend_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_link_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_li_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_map_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_menu_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_meta_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_mod_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_object_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_olist_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_options_collection.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_option_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_opt_group_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_paragraph_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_param_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_pre_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_quote_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_script_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_select_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_style_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_tablecaption_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_tablecell_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_tablecol_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_tablerow_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_tablesection_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_table_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_text_area_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_title_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\html\html_ulist_element.c" />
+    <ClCompile Include="..\..\..\libdom\src\utils\character_valid.c" />
+    <ClCompile Include="..\..\..\libdom\src\utils\hashtable.c" />
+    <ClCompile Include="..\..\..\libdom\src\utils\namespace.c" />
+    <ClCompile Include="..\..\..\libdom\src\utils\validate.c" />
+    <ClCompile Include="..\..\..\libdom\src\utils\walk.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{124cde21-9772-4ef9-a061-0019e344c912}</ProjectGuid>
+    <RootNamespace>dom</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;strncasecmp=_strnicmp;strcasecmp=_stricmp;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>../../../libdom/include;../../../libdom/src;../../../libwapcaplet/include;../../../libparserutils/include;../../../libhubbub/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
