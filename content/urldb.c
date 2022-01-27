@@ -2886,7 +2886,6 @@ nserror urldb_load(const char *filename)
 	int version;
 	int length;
 	FILE *fp;
-
 	assert(filename);
 
 	NSLOG(netsurf, INFO, "Loading URL file %s", filename);
@@ -3406,7 +3405,7 @@ void urldb_set_auth_details(nsurl *url, const char *realm, const char *auth)
 /* exported interface documented in netsurf/url_db.h */
 const char *urldb_get_auth_details(nsurl *url, const char *realm)
 {
-	struct path_data *p, *p_cur, *p_top;
+	struct path_data *p, *p_cur, *p_top = NULL;
 
 	assert(url);
 
