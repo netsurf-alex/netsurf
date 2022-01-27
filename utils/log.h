@@ -99,25 +99,40 @@ enum nslog_level {
 	NSLOG_LEVEL_CRITICAL = 6
 };
 
-extern void nslog_log(const char *file, const char *func, int ln, const char *format, ...) __attribute__ ((format (printf, 4, 5)));
+#ifdef __GNUC__
+	extern void nslog_log(const char *file, const char *func, int ln, const char *format, ...) __attribute__((format(printf, 4, 5)));
 
-#  ifdef __GNUC__
-#    define LOG_FN __PRETTY_FUNCTION__
-#    define LOG_LN __LINE__
-#  elif defined(__CC_NORCROFT)
-#    define LOG_FN __func__
-#    define LOG_LN __LINE__
-#  else
-#    define LOG_FN ""
-#    define LOG_LN __LINE__
-#  endif
+	#define LOG_FN __PRETTY_FUNCTION__
+	#define LOG_LN __LINE__
 
-#define NSLOG(catname, level, logmsg, args...)				\
-	do {								\
-		if (NSLOG_LEVEL_##level >= NSLOG_COMPILED_MIN_LEVEL) {	\
-			nslog_log(__FILE__, LOG_FN, LOG_LN, logmsg , ##args); \
-		}							\
-	} while(0)
+	#define NSLOG(catname, level, logmsg, args, ...)                               \
+		do {                                                                   \
+			if (NSLOG_LEVEL_##level >= NSLOG_COMPILED_MIN_LEVEL) {         \
+				nslog_log(__FILE__, LOG_FN, LOG_LN, logmsg, ##args);   \
+			}                                                              \
+		} while (0)
+#elif defined(__CC_NORCROFT)
+	#define LOG_FN __func__
+	#define LOG_LN __LINE__
+#elif defined(_MSC_VER)
+	extern void nslog_log(const char *file, const char *func, int ln, const char *format, ...);
+
+	#define LOG_FN __func__
+	#define LOG_LN __LINE__
+
+	#define NSLOG(catname, level, logmsg, ...)                               \
+	do {                                                                   \
+		if (NSLOG_LEVEL_##level >= NSLOG_COMPILED_MIN_LEVEL) {         \
+			nslog_log(__FILE__, LOG_FN, LOG_LN, logmsg, __VA_ARGS__);   \
+		}                                                              \
+	} while (0)
+#else
+	#define LOG_FN ""
+	#define LOG_LN __LINE__
+	#warning "NSLOG Unimplemented"
+	#define NSLOG(catname, level, logmsg, ...) // TODO: Needs to be rewritten
+#endif
+
 
 #endif  /* WITH_NSLOG */
 
