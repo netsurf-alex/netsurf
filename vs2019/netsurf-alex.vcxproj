@@ -86,7 +86,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;nswin32;CURL_STATICLIB;CARES_STATICLIB;__STRICT_ANSI__;NETSURF_LOG_LEVEL=VERBOSE;NETSURF_BUILTIN_LOG_FILTER="";NETSURF_BUILTIN_VERBOSE_FILTER="";NETSURF_HOMEPAGE="about:welcome";NETSURF_WINDOWS_RESPATH="";PATH_MAX=256;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_INETPTON;HAVE_VA_COPY;_USE_MATH_DEFINES;ssize_t=size_t;restrict=;strncasecmp=_strnicmp;strcasecmp=_stricmp;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;nswin32;CURL_STATICLIB;WITH_CURL;CARES_STATICLIB;__STRICT_ANSI__;NETSURF_LOG_LEVEL=VERBOSE;NETSURF_BUILTIN_LOG_FILTER="";NETSURF_BUILTIN_VERBOSE_FILTER="";NETSURF_HOMEPAGE="about:welcome";NETSURF_WINDOWS_RESPATH="";PATH_MAX=256;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;HAVE_INETPTON;HAVE_VA_COPY;_USE_MATH_DEFINES;ssize_t=size_t;restrict=;strncasecmp=_strnicmp;strcasecmp=_stricmp;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../;../include;../content/handlers;../frontends;../frontends/windows;../../libwapcaplet/include;../../libdom/include;../../libcss/include;../../libnsutils/include;../../curl/builds/libcurl-vc-x86-release-static-ipv6-sspi-schannel/include;../../inst/include;../../libiconv-for-Windows/include;../../zlib;../vs2019;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
@@ -97,6 +97,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comctl32.lib;comdlg32.lib;advapi32.lib;shell32.lib;shlwapi.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;ws2_32.lib;crypt32.lib;normaliz.lib;wldap32.lib;libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>D:\Projects\Web\netsurf-linux\netsurf\frontends\windows\res</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Manifest>
+      <EnableDpiAwareness>true</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

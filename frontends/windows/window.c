@@ -85,6 +85,12 @@ static const LPCWSTR windowclassname_main = L"nswsmainwindow";
  */
 static int open_windows = 0;
 
+/**
+ * System DPI
+ */
+#define DEFAULT_DPI 96
+static int system_dpi = 96;
+
 
 /**
  * create and attach accelerator table to main window
@@ -133,6 +139,25 @@ static void nsws_window_set_accels(struct gui_window *gw)
 	gw->acceltable = CreateAcceleratorTable(accels, nitems);
 }
 
+#if 0
+// DPI scale the position and size of the button control
+void nsws_update_dpi(HWND hWnd)
+{
+	system_dpi = GetDpiForWindow(hWnd);
+	/*
+	int dpiScaledX = MulDiv(INITIALX_96DPI, iDpi, 96);
+	int dpiScaledY = MulDiv(INITIALY_96DPI, iDpi, 96);
+	int dpiScaledWidth = MulDiv(INITIALWIDTH_96DPI, iDpi, 96);
+	int dpiScaledHeight = MulDiv(INITIALHEIGHT_96DPI, iDpi, 96);
+	SetWindowPos(hWnd,
+		     hWnd,
+		     dpiScaledX,
+		     dpiScaledY,
+		     dpiScaledWidth,
+		     dpiScaledHeight,
+		     SWP_NOZORDER | SWP_NOACTIVATE);*/
+} 
+#endif
 
 /**
  * creation of a new full browser window
@@ -292,7 +317,7 @@ urlbar_dimensions(HWND hWndParent,
 		  int *height)
 {
 	RECT rc;
-	const int cy_edit = NSWS_URLBAR_HEIGHT;
+	const int cy_edit = MulDiv(NSWS_URLBAR_HEIGHT, system_dpi, DEFAULT_DPI);
 
 	GetClientRect(hWndParent, &rc);
 	*x = (toolbuttonsize + 1) * (buttonc + 1) + (NSWS_THROBBER_WIDTH>>1);
@@ -570,13 +595,15 @@ nsws_window_throbber_create(HINSTANCE hInstance,
 			  gw->toolbuttonc,
 			  &urlx, &urly, &urlwidth, &urlheight);
 
+	int thwidth = MulDiv(NSWS_THROBBER_WIDTH, system_dpi, DEFAULT_DPI);
+
 	hwnd = CreateWindow(ANIMATE_CLASS,
 			    "",
 			    WS_CHILD | WS_VISIBLE | ACS_TRANSPARENT,
 			    gw->width - NSWS_THROBBER_WIDTH - 4,
 			    urly,
-			    NSWS_THROBBER_WIDTH,
-			    NSWS_THROBBER_WIDTH,
+			    thwidth,
+			    thwidth,
 			    hWndParent,
 			    (HMENU) IDC_MAIN_THROBBER,
 			    hInstance,
@@ -610,8 +637,10 @@ get_imagelist(HINSTANCE hInstance, int resid, int bsize, int bcnt)
 	HIMAGELIST hImageList;
 	HBITMAP hScrBM;
 
-	NSLOG(netsurf, INFO, "resource id %d, bzize %d, bcnt %d", resid,
+	NSLOG(netsurf, INFO, "resource id %d, bsize %d, bcnt %d", resid,
 	      bsize, bcnt);
+
+	bsize = MulDiv(bsize, system_dpi, DEFAULT_DPI);
 
 	hImageList = ImageList_Create(bsize, bsize,
 				      ILC_COLOR24 | ILC_MASK, 0,
@@ -620,11 +649,11 @@ get_imagelist(HINSTANCE hInstance, int resid, int bsize, int bcnt)
 		return NULL;
 	}
 
-	hScrBM = LoadImage(hInstance,
+	hScrBM = LoadImageW(hInstance,
 			   MAKEINTRESOURCE(resid),
 			   IMAGE_BITMAP,
-			   0,
-			   0,
+			   bsize * bcnt,
+			   bsize,
 			   LR_DEFAULTCOLOR);
 	if (hScrBM == NULL) {
 		win_perror("LoadImage");
@@ -1452,6 +1481,14 @@ nsws_window_event_callback(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 			win32_set_quit(true);
 		}
 		break;
+
+	case WM_DPICHANGED:
+		// Find the button and resize it
+		/* HWND hWndButton = FindWindowEx(hWnd, NULL, NULL, NULL);
+		if (hWndButton != NULL) {
+			UpdateButtonLayoutForDpi(hWndButton);
+		}*/
+		return 0;
 
 	}
 

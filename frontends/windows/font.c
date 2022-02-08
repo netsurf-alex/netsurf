@@ -249,7 +249,7 @@ win32_font_position(const plot_font_style_t *style,
 	int offset;
 	nserror ret = NSERROR_OK;
 
-	/* deal with zero length input or invalid search co-ordiate */
+	/* deal with zero length input or invalid search co-ordinate */
 	if ((utf8len == 0) || (x < 1)) {
 		*char_offset = 0;
 		*actual_x = 0;
