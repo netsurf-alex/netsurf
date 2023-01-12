@@ -96,7 +96,7 @@ nsw32_get_resource_data(const char *path,
 	uint8_t *data;
 	DWORD data_len;
 
-	reshandle = FindResourceW(NULL, path, L"USER");
+	reshandle = FindResourceA(NULL, path, "USER"); // This must use ANSI-version as users of this function provide ANSI strings
 	if (reshandle == NULL) {
 		return NSERROR_NOT_FOUND;
 	}

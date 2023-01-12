@@ -109,7 +109,7 @@ static nserror handle_dialog_message(LPMSG lpMsg)
 	struct dialog_list_entry *cur;
 	cur = dlglist;
 	while (cur != NULL) {
-		if (IsDialogMessageA(cur->hwnd, lpMsg)) {
+		if (IsDialogMessageW(cur->hwnd, lpMsg)) {
 			NSLOG(netsurf, DEBUG,
 			      "dispatched dialog hwnd %p", cur->hwnd);
 			return NSERROR_OK;
@@ -151,7 +151,7 @@ void win32_run(void)
 			}
 
 			/* wait for a message */
-			bRet = GetMessage(&Msg, NULL, 0, 0);
+			bRet = GetMessageW(&Msg, NULL, 0, 0);
 
 			/* if a timer was sucessfully created remove it */
 			if (timer_id != 0) {

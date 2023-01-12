@@ -136,7 +136,7 @@ static void nsws_window_set_accels(struct gui_window *gw)
 	accels[12].fVirt = FVIRTKEY;
 	accels[12].cmd = IDM_VIEW_FULLSCREEN;
 
-	gw->acceltable = CreateAcceleratorTable(accels, nitems);
+	gw->acceltable = CreateAcceleratorTableW(accels, nitems);
 }
 
 #if 0
@@ -392,13 +392,13 @@ nsws_window_toolbar_callback(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 		RemovePropW(hwnd, L"GuiWnd");
 		RemovePropW(hwnd, L"OrigMsgProc");
 		/* put the original message handler back */
-		SetWindowLongPtrW(hwnd, GWLP_WNDPROC, (LONG_PTR)toolproc);
+		SetWindowLongW(hwnd, GWLP_WNDPROC, (LONG_PTR)toolproc);
 		break;
 
 	}
 
 	/* chain to the next handler */
-	return CallWindowProc(toolproc, hwnd, msg, wparam, lparam);
+	return CallWindowProcW(toolproc, hwnd, msg, wparam, lparam);
 }
 
 
@@ -528,7 +528,7 @@ nsws_window_urlbar_create(HINSTANCE hInstance,
 	SetPropW(hwnd, L"GuiWnd", (HANDLE)gw);
 
 	/* subclass the message handler */
-	urlproc = (WNDPROC)SetWindowLongPtrW(hwnd,
+	urlproc = (WNDPROC)SetWindowLongW(hwnd,
 					    GWLP_WNDPROC,
 					    (LONG_PTR)nsws_window_urlbar_callback);
 
@@ -736,7 +736,7 @@ nsws_window_create_toolbar(HINSTANCE hInstance,
 				   gw->toolbuttonsize,
 				   gw->toolbuttonc);
 	if (hImageList != NULL) {
-		SendMessage(hWndToolbar,
+		SendMessageW(hWndToolbar,
 			    TB_SETIMAGELIST,
 			    0,
 			    (LPARAM)hImageList);
@@ -748,7 +748,7 @@ nsws_window_create_toolbar(HINSTANCE hInstance,
 				   gw->toolbuttonsize,
 				   gw->toolbuttonc);
 	if (hImageList != NULL) {
-		SendMessage(hWndToolbar,
+		SendMessageW(hWndToolbar,
 			    TB_SETDISABLEDIMAGELIST,
 			    0,
 			    (LPARAM)hImageList);
@@ -760,7 +760,7 @@ nsws_window_create_toolbar(HINSTANCE hInstance,
 				   gw->toolbuttonsize,
 				   gw->toolbuttonc);
 	if (hImageList != NULL) {
-		SendMessage(hWndToolbar,
+		SendMessageW(hWndToolbar,
 			    TB_SETHOTIMAGELIST,
 			    0,
 			    (LPARAM)hImageList);
