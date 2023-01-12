@@ -25,11 +25,7 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#ifndef _MSC_VER
 #include <unistd.h>
-#else
-#include <unistd_msvc.h>
-#endif
 #include <windows.h>
 
 #include "utils/errors.h"
@@ -113,7 +109,7 @@ static nserror handle_dialog_message(LPMSG lpMsg)
 	struct dialog_list_entry *cur;
 	cur = dlglist;
 	while (cur != NULL) {
-		if (IsDialogMessage(cur->hwnd, lpMsg)) {
+		if (IsDialogMessageA(cur->hwnd, lpMsg)) {
 			NSLOG(netsurf, DEBUG,
 			      "dispatched dialog hwnd %p", cur->hwnd);
 			return NSERROR_OK;
@@ -147,7 +143,7 @@ void win32_run(void)
 		timeout = schedule_run();
 
 		if (timeout == 0) {
-			bRet = PeekMessage(&Msg, NULL, 0, 0, PM_REMOVE);
+			bRet = PeekMessageW(&Msg, NULL, 0, 0, PM_REMOVE);
 		} else {
 			if (timeout > 0) {
 				/* set up a timer to ensure we get woken */
@@ -167,7 +163,7 @@ void win32_run(void)
 		if ((bRet > 0) &&
 		    (handle_dialog_message(&Msg) != NSERROR_OK)) {
 			TranslateMessage(&Msg);
-			DispatchMessage(&Msg);
+			DispatchMessageW(&Msg);
 		}
 	}
 }

@@ -19,11 +19,7 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#ifndef _MSC_VER
 #include <unistd.h>
-#else
-#include <unistd_msvc.h>
-#endif
 #include <windows.h>
 
 #include "utils/errors.h"
@@ -61,19 +57,19 @@ static struct nsws_pointers nsws_pointer;
 /* exported interface documented in windows/pointers.h */
 void nsws_window_init_pointers(HINSTANCE hinstance)
 {
-	nsws_pointer.hand = LoadCursor(NULL, IDC_HAND);
-	nsws_pointer.ibeam = LoadCursor(NULL, IDC_IBEAM);
-	nsws_pointer.cross = LoadCursor(NULL, IDC_CROSS);
-	nsws_pointer.sizeall = LoadCursor(NULL, IDC_SIZEALL);
-	nsws_pointer.sizewe = LoadCursor(NULL, IDC_SIZEWE);
-	nsws_pointer.sizens = LoadCursor(NULL, IDC_SIZENS);
-	nsws_pointer.sizenesw = LoadCursor(NULL, IDC_SIZENESW);
-	nsws_pointer.sizenwse = LoadCursor(NULL, IDC_SIZENWSE);
-	nsws_pointer.wait = LoadCursor(NULL, IDC_WAIT);
-	nsws_pointer.appstarting = LoadCursor(NULL, IDC_APPSTARTING);
-	nsws_pointer.no = LoadCursor(NULL, IDC_NO);
-	nsws_pointer.help = LoadCursor(NULL, IDC_HELP);
-	nsws_pointer.arrow = LoadCursor(NULL, IDC_ARROW);
+	nsws_pointer.hand = LoadCursorA(NULL, IDC_HAND);
+	nsws_pointer.ibeam = LoadCursorA(NULL, IDC_IBEAM);
+	nsws_pointer.cross = LoadCursorA(NULL, IDC_CROSS);
+	nsws_pointer.sizeall = LoadCursorA(NULL, IDC_SIZEALL);
+	nsws_pointer.sizewe = LoadCursorA(NULL, IDC_SIZEWE);
+	nsws_pointer.sizens = LoadCursorA(NULL, IDC_SIZENS);
+	nsws_pointer.sizenesw = LoadCursorA(NULL, IDC_SIZENESW);
+	nsws_pointer.sizenwse = LoadCursorA(NULL, IDC_SIZENWSE);
+	nsws_pointer.wait = LoadCursorA(NULL, IDC_WAIT);
+	nsws_pointer.appstarting = LoadCursorA(NULL, IDC_APPSTARTING);
+	nsws_pointer.no = LoadCursorA(NULL, IDC_NO);
+	nsws_pointer.help = LoadCursorA(NULL, IDC_HELP);
+	nsws_pointer.arrow = LoadCursorA(NULL, IDC_ARROW);
 }
 
 /* exported interface documented in windows/pointers.h */

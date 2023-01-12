@@ -66,7 +66,7 @@ nsws_drawable_wheel(struct gui_window *gw, HWND hwnd, WPARAM wparam)
 	z = (z < 0) ? -1 * z : z;
 
 	for (i = 0; i < z; i++) {
-		SendMessage(hwnd, newmessage, MAKELONG(command, 0), 0);
+		SendMessageW(hwnd, newmessage, MAKELONG(command, 0), 0);
 	}
 
 	return 0;
@@ -293,42 +293,42 @@ nsws_drawable_keydown(struct gui_window *gw, HWND hwnd, WPARAM wparam)
 	case VK_LEFT:
 		i = NS_KEY_LEFT;
 		if (shift)
-			SendMessage(hwnd, WM_HSCROLL,
+			SendMessageW(hwnd, WM_HSCROLL,
 				    MAKELONG(SB_LINELEFT, 0), 0);
 		break;
 
 	case VK_RIGHT:
 		i = NS_KEY_RIGHT;
 		if (shift)
-			SendMessage(hwnd, WM_HSCROLL,
+			SendMessageW(hwnd, WM_HSCROLL,
 				    MAKELONG(SB_LINERIGHT, 0), 0);
 		break;
 
 	case VK_UP:
 		i = NS_KEY_UP;
 		if (shift)
-			SendMessage(hwnd, WM_VSCROLL,
+			SendMessageW(hwnd, WM_VSCROLL,
 				    MAKELONG(SB_LINEUP, 0), 0);
 		break;
 
 	case VK_DOWN:
 		i = NS_KEY_DOWN;
 		if (shift)
-			SendMessage(hwnd, WM_VSCROLL,
+			SendMessageW(hwnd, WM_VSCROLL,
 				    MAKELONG(SB_LINEDOWN, 0), 0);
 		break;
 
 	case VK_HOME:
 		i = NS_KEY_LINE_START;
 		if (shift)
-			SendMessage(hwnd, WM_HSCROLL,
+			SendMessageW(hwnd, WM_HSCROLL,
 				    MAKELONG(SB_PAGELEFT, 0), 0);
 		break;
 
 	case VK_END:
 		i = NS_KEY_LINE_END;
 		if (shift)
-			SendMessage(hwnd, WM_HSCROLL,
+			SendMessageW(hwnd, WM_HSCROLL,
 				    MAKELONG(SB_PAGERIGHT, 0), 0);
 		break;
 
@@ -337,11 +337,11 @@ nsws_drawable_keydown(struct gui_window *gw, HWND hwnd, WPARAM wparam)
 		break;
 
 	case VK_NEXT:
-		SendMessage(hwnd, WM_VSCROLL, MAKELONG(SB_PAGEDOWN, 0), 0);
+		SendMessageW(hwnd, WM_VSCROLL, MAKELONG(SB_PAGEDOWN, 0), 0);
 		return 1;
 
 	case VK_PRIOR:
-		SendMessage(hwnd, WM_VSCROLL, MAKELONG(SB_PAGEUP, 0), 0);
+		SendMessageW(hwnd, WM_VSCROLL, MAKELONG(SB_PAGEUP, 0), 0);
 		return 1;
 
 	default:
@@ -568,7 +568,7 @@ nsws_window_drawable_event_callback(HWND hwnd,
 	if (gw == NULL) {
 		NSLOG(netsurf, INFO,
 		      "Unable to find gui window structure for hwnd %p", hwnd);
-		return DefWindowProc(hwnd, msg, wparam, lparam);
+		return DefWindowProcW(hwnd, msg, wparam, lparam);
 	}
 
 	switch(msg) {
@@ -694,7 +694,7 @@ nsws_window_create_drawable(HINSTANCE hinstance,
 	}
 
 	/* set the gui window associated with this toolbar */
-	SetProp(hwnd, TEXT("GuiWnd"), (HANDLE)gw);
+	SetPropW(hwnd, L"GuiWnd", (HANDLE)gw);
 
 	return hwnd;
 }
@@ -709,7 +709,7 @@ nsws_create_drawable_class(HINSTANCE hinstance) {
 	WNDCLASSEXW w;
 
 	/* drawable area */
-	w.cbSize = sizeof(WNDCLASSEX);
+	w.cbSize = sizeof(WNDCLASSEXW);
 	w.style	= 0;
 	w.lpfnWndProc = nsws_window_drawable_event_callback;
 	w.cbClsExtra = 0;

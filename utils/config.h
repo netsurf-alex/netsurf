@@ -147,7 +147,7 @@ char *realpath(const char *path, char *resolved_path);
 #endif
 
 #define HAVE_REGEX
-#if (defined(__serenity__))
+#if (defined(__serenity__) || defined(_MSC_VER))
 #undef HAVE_REGEX
 #endif
 

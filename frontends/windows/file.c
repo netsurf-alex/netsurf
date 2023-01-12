@@ -24,11 +24,7 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#ifndef _MSC_VER
 #include <unistd.h>
-#else
-#include <unistd_msvc.h>
-#endif
 #include <windows.h>
 
 #include "utils/errors.h"

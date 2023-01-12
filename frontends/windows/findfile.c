@@ -21,11 +21,7 @@
 #include <windows.h>
 
 #include <limits.h>
-#ifndef _MSC_VER
 #include <unistd.h>
-#else
-#include <unistd_msvc.h>
-#endif
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>

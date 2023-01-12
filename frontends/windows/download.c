@@ -112,7 +112,7 @@ static void nsws_download_update_label(void *p)
 		free(w->time_left);
 		w->time_left = NULL;
 	}
-	SendMessage(sub, WM_SETTEXT, (WPARAM)0, (LPARAM)label);
+	SendMessageA(sub, WM_SETTEXT, (WPARAM)0, (LPARAM)label);
 	if (w->progress < 10000) {
 		win32_schedule(500, nsws_download_update_label, p);
 	}
@@ -127,7 +127,7 @@ static void nsws_download_update_progress(void *p)
 		return;
 	}
 	HWND sub = GetDlgItem(w->hwnd, IDC_DOWNLOAD_PROGRESS);
-	SendMessage(sub, PBM_SETPOS, (WPARAM)(w->progress / 100), 0);
+	SendMessageW(sub, PBM_SETPOS, (WPARAM)(w->progress / 100), 0);
 	if (w->progress < 10000) {
 		win32_schedule(500, nsws_download_update_progress, p);
 	}
@@ -184,8 +184,8 @@ nsws_download_event_callback(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 
 static bool nsws_download_window_up(struct gui_download_window *w)
 {
-	w->hwnd = CreateDialog(hinst,
-			       MAKEINTRESOURCE(IDD_DOWNLOAD),
+	w->hwnd = CreateDialogW(hinst,
+			       MAKEINTRESOURCEW(IDD_DOWNLOAD),
 			       gui_window_main_window(w->window),
 			       nsws_download_event_callback);
 	if (w->hwnd == NULL) {
@@ -247,7 +247,7 @@ gui_download_window_create(download_context *ctx, struct gui_window *gui)
 		free(w);
 		return NULL;
 	}
-	SHGetFolderPath(NULL, CSIDL_DESKTOP, NULL, SHGFP_TYPE_CURRENT,
+	SHGetFolderPathA(NULL, CSIDL_DESKTOP, NULL, SHGFP_TYPE_CURRENT,
 			destination);
 	if (strlen(destination) < PATH_MAX - 2)
 		strcat(destination, "/");

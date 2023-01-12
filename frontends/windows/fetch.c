@@ -96,7 +96,7 @@ nsw32_get_resource_data(const char *path,
 	uint8_t *data;
 	DWORD data_len;
 
-	reshandle = FindResource(NULL, path, "USER");
+	reshandle = FindResourceW(NULL, path, L"USER");
 	if (reshandle == NULL) {
 		return NSERROR_NOT_FOUND;
 	}

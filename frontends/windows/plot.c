@@ -1004,7 +1004,7 @@ text(const struct redraw_context *ctx,
 	SIZE s;
 	LPWSTR wstring;
 	fontbak = (HFONT) SelectObject(plot_hdc, font);
-	GetTextExtentPoint(plot_hdc, text, length, &s);
+	GetTextExtentPointA(plot_hdc, text, length, &s);
 
 	SelectClipRgn(plot_hdc, clipregion);
 

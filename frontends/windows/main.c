@@ -90,11 +90,12 @@ static int get_screen_dpi(void)
  */
 static nserror get_config_home(char **config_home_out)
 {
-	TCHAR adPath[MAX_PATH]; /* appdata path */
-	char nsdir[] = "NetSurf";
+	WCHAR adPath[MAX_PATH]; /* appdata path */
+	int mbPathLen;
+	WCHAR nsdir[] = L"NetSurf";
 	HRESULT hres;
 
-	hres = SHGetFolderPath(NULL,
+	hres = SHGetFolderPathW(NULL,
 			       CSIDL_APPDATA | CSIDL_FLAG_CREATE,
 			       NULL,
 			       SHGFP_TYPE_CURRENT,
@@ -103,12 +104,12 @@ static nserror get_config_home(char **config_home_out)
 		return NSERROR_INVALID;
 	}
 
-	if (PathAppend(adPath, nsdir) == false) {
+	if (PathAppendW(adPath, nsdir) == false) {
 		return NSERROR_NOT_FOUND;
 	}
 
 	/* ensure netsurf directory exists */
-	if (CreateDirectory(adPath, NULL) == 0) {
+	if (CreateDirectoryW(adPath, NULL) == 0) {
 		DWORD dw;
 		dw = GetLastError();
 		if (dw != ERROR_ALREADY_EXISTS) {
@@ -116,7 +117,17 @@ static nserror get_config_home(char **config_home_out)
 		}
 	}
 
-	*config_home_out = strdup(adPath);
+	mbPathLen = wcslen(adPath);
+	*config_home_out = malloc(mbPathLen + 1);
+	WideCharToMultiByte(CP_UTF8,
+			    0,
+			    adPath,
+			    -1,
+			    *config_home_out,
+			    mbPathLen + 1,
+			    NULL,
+			    NULL);
+	//*config_home_out = strdup(adPath);
 
 	NSLOG(netsurf, INFO, "using config path \"%s\"", *config_home_out);
 
